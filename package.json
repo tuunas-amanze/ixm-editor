@@ -1,7 +1,7 @@
 {
   "name": "ixm-editor",
-  "version": "1.0.0",
-  "description": "IXM",
+  "version": "1.0.1",
+  "description": "Block editor for arka",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch"
   },
-  "author": "tuunas amanze / 雨部 ツナ",
+  "author": "tuunas amanze",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.17.0",

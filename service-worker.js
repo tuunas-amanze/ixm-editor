@@ -5,6 +5,7 @@ self.addEventListener('install', function(event) {
           'index.html',
           'public/main.js',
           'https://unpkg.com/dexie@latest/dist/dexie.js',
+          'https://unpkg.com/dexie@latest/dist/dexie.js.map',
           'https://unpkg.com/pwacompat@latest/pwacompat.min.js',
           'public/4ce3958d77223022d74f.ttf',
           'public/66e7534161fcdd8f1727.ttf',
