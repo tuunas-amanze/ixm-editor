@@ -6,8 +6,23 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <link rel="manifest" href="./manifest/manifest.json">
         <link rel="manifest" href="./manifest/manifest.webmanifest">
-        <script async src="https://cdn.jsdelivr.net/npm/pwacompat" crossorigin="anonymous"></script>
+        <script async src="https://unpkg.com/pwacompat@latest" crossorigin="anonymous"></script>
         <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+        <script type="text/javascript">
+            // install Service Worker
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", () => {
+                    navigator.serviceWorker
+                        .register("service-worker.js")
+                        .then((registration) => {
+                            console.log("Service Worker registered: ", registration);
+                        })
+                        .catch((registrationError) => {
+                            console.error("Service Worker registration failed: ", registrationError);
+                        });
+                });
+            }
+        </script>
         <title>IXM Editor</title>
     </head>
     <body>
@@ -80,18 +95,4 @@
         </nav>
         <div class="uk-margin" id='editor_container'></div>
     </body>
-    <script>
-        if ("serviceWorker" in navigator) {
-            window.addEventListener("load", () => {
-                navigator.serviceWorker
-                    .register("./public/service-worker.js")
-                    .then((registration) => {
-                        console.log("Service Worker registered: ", registration);
-                    })
-                    .catch((registrationError) => {
-                        console.error("Service Worker registration failed: ", registrationError);
-                    });
-            });
-        }
-    </script>
 </html>

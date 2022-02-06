@@ -1,9 +1,9 @@
 {
-    "theme_color": "#f69435",
-    "background_color": "#f69435",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
     "display": "standalone",
     "scope": "/",
-    "start_url": "/index.html",
+    "start_url": "/",
     "name": "IXM Editor",
     "short_name": "IXM",
     "description": "Block Editor for arka",

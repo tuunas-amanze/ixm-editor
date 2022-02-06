@@ -1,12 +1,98 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><link rel="manifest" href="./manifest/manifest.json"><link rel="manifest" href="./manifest/manifest.webmanifest"><script async src="https://cdn.jsdelivr.net/npm/pwacompat" crossorigin="anonymous"></script><script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script><title>IXM Editor</title><script defer="defer" src="public/main.js"></script></head><body><nav class="uk-navbar-container uk-margin" uk-navbar><div class="uk-navbar-left"><a class="uk-navbar-item uk-logo arka-logo" href="#">ixm</a><div class="uk-navbar-item"><input class="uk-input" placeholder="TITLE" id="title"></div></div><div class="uk-navbar-right"><div class="uk-navbar-item"><button class="uk-button uk-button-default" href="#modal-overflow" uk-toggle id="open">Open</button><div class="uk-modal-container" id="modal-overflow" uk-modal><div class="uk-modal-dialog"><button class="uk-modal-close-default" type="button" uk-close></button><div class="uk-modal-header"><h3 class="uk-modal-title">Open File</h3></div><div class="uk-modal-body" uk-overflow-auto><table class="uk-table uk-table-small uk-table-justify uk-table-divider"><caption>Select your data to open it. If you want, you can also delete your data.</caption><thead><tr><th>Title</th><th>ID</th><th></th><th></th></tr></thead><tbody id="open_file_list"></tbody></table></div><div class="uk-modal-footer uk-text-left"><button class="uk-button uk-button-default" type="button" id="import">Import</button></div></div></div></div><div class="uk-navbar-item"><button class="uk-button uk-button-primary" href="#modal-overflow-save" uk-toggle id="open">Download</button><div id="modal-overflow-save" uk-modal><div class="uk-modal-dialog"><button class="uk-modal-close-default" type="button" uk-close></button><div class="uk-modal-header"><h3 class="uk-modal-title">Download</h3></div><div class="uk-mordal-body" uk-overflow-auto><p class="uk-padding-small">Select format of download data.</p><select class="uk-select" id="download_format"><option value="json">JSON</option><option value="backup">Backup</option></select></div><div class="uk-modal-footer uk-text-right"><button class="uk-button uk-button-primary" type="button" id="download_2">Download</button></div></div></div></div></div></nav><div class="uk-margin" id="editor_container"></div></body><script>if ("serviceWorker" in navigator) {
-            window.addEventListener("load", () => {
-                navigator.serviceWorker
-                    .register("./public/service-worker.js")
-                    .then((registration) => {
-                        console.log("Service Worker registered: ", registration);
-                    })
-                    .catch((registrationError) => {
-                        console.error("Service Worker registration failed: ", registrationError);
-                    });
-            });
-        }</script></html>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="manifest" href="./manifest/manifest.json">
+        <link rel="manifest" href="./manifest/manifest.webmanifest">
+        <script async src="https://unpkg.com/pwacompat@latest" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
+        <script type="text/javascript">
+            // install Service Worker
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", () => {
+                    navigator.serviceWorker
+                        .register("service-worker.js")
+                        .then((registration) => {
+                            console.log("Service Worker registered: ", registration);
+                        })
+                        .catch((registrationError) => {
+                            console.error("Service Worker registration failed: ", registrationError);
+                        });
+                });
+            }
+        </script>
+        <title>IXM Editor</title>
+    <script defer src="public/main.js"></script></head>
+    <body>
+        <nav class="uk-navbar-container uk-margin" uk-navbar>
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo arka-logo" href="#">ixm</a>
+                <div class="uk-navbar-item">
+                    <input class="uk-input" type="text" placeholder="TITLE" id="title">
+                </div>
+            </div>
+            <div class="uk-navbar-right">
+                <div class="uk-navbar-item">
+                    <!--<button class="uk-button uk-button-default" id="open">open</button>-->
+                    <button class="uk-button uk-button-default" href="#modal-overflow" uk-toggle id="open">Open</button>
+                    <div class="uk-modal-container" id="modal-overflow" uk-modal>
+                        <div class="uk-modal-dialog">
+
+                            <button class="uk-modal-close-default" type="button" uk-close></button>
+
+                            <div class="uk-modal-header">
+                                <h3 class="uk-modal-title">Open File</h2>
+                            </div>
+
+                            <div class="uk-modal-body" uk-overflow-auto>
+                                <table class="uk-table uk-table-small uk-table-justify uk-table-divider">
+                                    <caption>Select your data to open it. If you want, you can also delete your data.</caption>
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>ID</th>
+                                            <th></th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="open_file_list">
+                                        <!-- ここにデータベース上のファイルリストが入る -->
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="uk-modal-footer uk-text-left">
+                                <button class="uk-button uk-button-default" type="button" id="import">Import</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-navbar-item">
+                    <button class="uk-button uk-button-primary" href="#modal-overflow-save" uk-toggle id="open">Download</button>
+                    <div id="modal-overflow-save" uk-modal>
+                        <div class="uk-modal-dialog">
+                            <button class="uk-modal-close-default" type="button" uk-close></button>
+                            <div class="uk-modal-header">
+                                <h3 class="uk-modal-title">Download</h2>
+                            </div>
+                            <div class="uk-mordal-body" uk-overflow-auto>
+                                <p class="uk-padding-small">Select format of download data.</p>
+                                <select class="uk-select" id="download_format">
+                                    <option value="json">JSON</option>
+                                    <!--<option value="html">HTML</option>-->
+                                    <option value="backup">Backup</option>
+                                </select>
+                            </div>
+                            <div class="uk-modal-footer uk-text-right">
+                                <button class="uk-button uk-button-primary" type="button" id="download_2">Download</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="uk-margin" id='editor_container'></div>
+    </body>
+</html>

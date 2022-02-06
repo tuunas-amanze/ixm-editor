@@ -2,7 +2,6 @@
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const WorkboxWebpackPlugin = require("workbox-webpack-plugin");
 
 const isProduction = process.env.NODE_ENV == "production";
 
@@ -50,20 +49,6 @@ module.exports = () => {
   } else {
     config.mode = "development";
   }
-
-  config.plugins.push(new WorkboxWebpackPlugin.GenerateSW({
-    skipWaiting: true,
-    clientsClaim: true,
-    runtimeCaching: [
-    {
-      urlPattern: /\.(html|css|js|jsx)$/i,
-      handler: 'NetworkFirst'
-    },
-    {
-      urlPattern: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-      handler: 'CacheFirst'
-    }]
-  }));
 
   return config;
 };
