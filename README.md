@@ -1,15 +1,9 @@
-# 🚀 Welcome to your new awesome project!
+# IXM Editor
 
-This project has been created using **webpack-cli**, you can now run
+## 説明
 
-```
-npm run build
-```
+arka で記述できるエディターです．
 
-or
+## URL
 
-```
-yarn build
-```
-
-to bundle your application
+[https://ixm-editor.pages.dev/](https://ixm-editor.pages.dev/)
