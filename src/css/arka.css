@@ -1,0 +1,58 @@
+/*
+@font-face {
+    font-family: "alblant";
+    src: url('./fonts/normal/alblant.ttf') format('truetype');
+}
+@font-face {
+    font-family: "fenil";
+    src: url('./fonts/normal/fenil.otf') format('otf');
+}
+@font-face {
+    font-family: "kardinal";
+    src: url('./fonts/normal/kardinal.ttf') format('truetype');
+}
+@font-face {
+    font-family: "nalnia";
+    src: url('./fonts/normal/nalnia.ttf') format('truetype');
+}
+@font-face {
+    font-family: "olivia";
+    src: url('./fonts/normal/olivia.ttf') format('truetype');
+}
+*/
+
+@font-face {
+    font-family: "inje";
+    src: url('../fonts/special/inje.ttf') format('truetype');
+}
+@font-face {
+    font-family: "defans";
+    src: url('../fonts/special/defans.ttf') format('truetype');
+}
+
+/*
+@font-face {
+    font-family: "lantia";
+    src: url('./fonts/special/lantia.ttf') format('truetype');
+}
+*/
+
+.arka {
+    font-family: "inje", sans-serif;
+    font-size: 1.25em;
+}
+
+.arka-logo {
+    font-family: "defans", sans-serif;
+    font-size: 2em;
+}
+
+.arka-button {
+    font-family: "inje", sans-serif;
+    font-size: 1.25em;
+}
+
+[contenteditable]:focus {
+    outline: none;
+    outline-offset: 0;
+}
