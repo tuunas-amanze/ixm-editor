@@ -27,20 +27,18 @@
     </head>
     <body>
         <nav class="uk-navbar-container uk-margin" uk-navbar>
-            <div class="uk-navbar-left">
-                <a class="uk-navbar-item uk-logo arka-logo" href="#">ixm</a>
-                <div class="uk-navbar-item">
-                    <input class="uk-input" type="text" placeholder="TITLE" id="title">
-                </div>
-            </div>
             <div class="uk-navbar-right">
                 <div class="uk-navbar-item">
+                    <a href="#" class="uk-icon-link" uk-icon="icon: plus-circle; ratio: 1.25;" uk-tooltip="New" id="create"></a>
+                </div>
+                <div class="uk-navbar-item">
                     <!--<button class="uk-button uk-button-default" id="open">open</button>-->
-                    <button class="uk-button uk-button-default" href="#modal-overflow" uk-toggle id="open">Open</button>
+                    <!--<button class="uk-button uk-button-default" href="#modal-overflow" uk-toggle id="open">Open</button>-->
+                    <a href="#modal-overflow" class="uk-icon-link" uk-icon="icon: file-edit; ratio: 1.25;" uk-tooltip="Open" uk-toggle id="open"></a>
                     <div class="uk-modal-container" id="modal-overflow" uk-modal>
                         <div class="uk-modal-dialog">
 
-                            <button class="uk-modal-close-default" type="button" uk-close></button>
+                            <button class="uk-modal-close-default" uk-tooltip="Close" type="button" uk-close></button>
 
                             <div class="uk-modal-header">
                                 <h3 class="uk-modal-title">Open File</h2>
@@ -52,9 +50,8 @@
                                     <thead>
                                         <tr>
                                             <th>Title</th>
-                                            <th>ID</th>
-                                            <th></th>
-                                            <th></th>
+                                            <th>Edit</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody id="open_file_list">
@@ -70,10 +67,10 @@
                     </div>
                 </div>
                 <div class="uk-navbar-item">
-                    <button class="uk-button uk-button-primary" href="#modal-overflow-save" uk-toggle id="open">Download</button>
+                    <a href="#modal-overflow-save" class="uk-icon-link" uk-icon="icon: download; ratio: 1.25;" uk-tooltip="Download" uk-toggle id="open"></a>
                     <div id="modal-overflow-save" uk-modal>
                         <div class="uk-modal-dialog">
-                            <button class="uk-modal-close-default" type="button" uk-close></button>
+                            <button class="uk-modal-close-default" uk-tooltip="Close" type="button" uk-close></button>
                             <div class="uk-modal-header">
                                 <h3 class="uk-modal-title">Download</h2>
                             </div>
@@ -91,8 +88,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="uk-navbar-item">
+                    <a href="#" class="uk-icon-link" uk-tooltip="Setting" uk-icon="icon: cog; ratio: 1.25;"></a>
+                </div>
+                <div class="uk-navbar-item">
+                    <a href="#" class="uk-icon-link" uk-tooltip="Info" uk-icon="icon: info; ratio: 1.25;"></a>
+                </div>
             </div>
         </nav>
+        <input class="uk-input" type="text" placeholder="Title" id="title" />
         <div class="uk-margin" id='editor_container'></div>
     </body>
 </html>

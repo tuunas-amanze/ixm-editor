@@ -22,7 +22,7 @@ window[ixm] = {
 window[ixm].document_id = "default";
 window[ixm].editor_id = Date.now();
 
-window[ixm].editor_title = Date.now();
+window[ixm].editor_title = 'New File';
 
 window[ixm].database = new Dexie('IxmEditorDatabase');
 window[ixm].database.version(1).stores({
@@ -43,6 +43,29 @@ window[ixm].document_title.value = window[ixm].editor_title;
 window[ixm].document_title.addEventListener('input', e => {
     window[ixm].editor_title = e.target.value;
 })
+
+const create_button = document.querySelector('#create');
+create_button.addEventListener('click', e => {
+    e.preventDefault();
+    window[ixm].database.personal_id.toArray().then((id) => {
+        if (id.length) {
+            window[ixm].database.editor_data.add({
+                id: id[0].id + '-' + Date.now(),
+                title: 'New File',
+                data: {}
+            });
+        } else {
+            throw new Error('"personal_id" is none.');
+        }
+    }).catch(error => {
+        console.error(error);
+
+        window[ixm].database.personal_id.add({
+            id: random_text(10)
+        });
+        console.log('Create New "personal_id".');
+    });
+});
 
 const open_button = document.querySelector('#open');
 const file_list = document.querySelector('#open_file_list')

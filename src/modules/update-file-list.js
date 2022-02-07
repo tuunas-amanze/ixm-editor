@@ -6,23 +6,28 @@ export default function update_file_list(parent_element) {
         parent_element.removeChild( parent_element.firstChild );
     }
 
+    let button_body = document.createElement('a');
+                button_body.classList.add("uk-icon-link");
+                button_body.setAttribute('uk-icon', "icon: pencil; ratio: 1.25;");
+                button_body.href = '#'
+
     window[ixm].database.editor_data.toArray().then((list) => {
         for (let data of list) {
             let raw = document.createElement('tr');
             let title = document.createElement('td');
             title.textContent = data.title;
-            let id = document.createElement('td');
-            id.textContent = data.id;
+            //let id = document.createElement('td');
+            //id.textContent = data.id;
             let button_container = document.createElement('td');
-            let button_body = document.createElement('button');
-            button_body.classList.add("uk-button", "uk-button-default");
-            button_body.setAttribute('type', "button");
-            button_body.textContent = 'Open';
+            let button_body = document.createElement('a');
+            button_body.classList.add("uk-icon-link");
+            button_body.setAttribute('uk-icon', "icon: pencil; ratio: 1.25;");
+            button_body.href = '#';
             let delete_button_container = document.createElement('td');
-            let delete_button_body = document.createElement('button');
-            delete_button_body.classList.add("uk-button", "uk-button-danger");
-            delete_button_body.setAttribute('type', "button");
-            delete_button_body.textContent = 'Delete';
+            let delete_button_body = document.createElement('a');
+            delete_button_body.classList.add("uk-icon-link", "uk-text-danger");
+            delete_button_body.setAttribute('uk-icon', "icon: trash; ratio: 1.25;");
+            delete_button_body.href = '#';
 
             button_container.appendChild(button_body);
             if (data.id != window[ixm].document_id) {
@@ -30,7 +35,7 @@ export default function update_file_list(parent_element) {
             }
 
             raw.appendChild(title);
-            raw.appendChild(id);
+            //raw.appendChild(id);
             raw.appendChild(button_container);
             raw.appendChild(delete_button_container);
 
